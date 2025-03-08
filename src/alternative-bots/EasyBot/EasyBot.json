@@ -1,0 +1,10 @@
+{
+  "name": "Easy Bot",
+  "version": "1.0",
+  "authors": ["Rafizan"],
+  "description": "A bot that wins easily",
+  "homepage": "",
+  "countryCodes": ["id"],
+  "platform": ".Net 9.0",
+  "programmingLang": "C# latest"
+}
