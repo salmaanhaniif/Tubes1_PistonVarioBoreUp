@@ -13,12 +13,12 @@ Berfokus melakukan damage ke musuh dengan cepat tanpa terlalu membahayakan diri 
 
 ## Requirements
 - Tidak ada, jalankan saja jar Tank Royale
-- Pastikan menginstall dot net versi 6 atau 9 (disarankan keduanya) untuk menjalankan bot
+- Pastikan menginstall Dot Net (untuk C#) versi 6.0 atau 9.0 (disarankan keduanya) untuk menjalankan bot
 
 ## Langkah Compile
-- Tidak ada, sudah tercompile ke jar Tank Royale
+- Tidak ada, sudah tercompile ke file *.jar Tank Royale
 
 ## Author 
-Fajar Kurniawan	13523027
-Rafizan Muhammad Syawalazmi	13523034
-Salman Hanif	13523056
+- Fajar Kurniawan	13523027
+- Rafizan Muhammad Syawalazmi	13523034
+- Salman Hanif	13523056
