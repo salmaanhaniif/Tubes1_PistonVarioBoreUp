@@ -1,0 +1,24 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrackerBot", "TrackerBot.csproj", "{36748F37-C8CF-A914-FFC8-BA5FB2408ADF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{36748F37-C8CF-A914-FFC8-BA5FB2408ADF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36748F37-C8CF-A914-FFC8-BA5FB2408ADF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36748F37-C8CF-A914-FFC8-BA5FB2408ADF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36748F37-C8CF-A914-FFC8-BA5FB2408ADF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E8C9B46E-BC4A-437C-B67D-1D1CF4D15648}
+	EndGlobalSection
+EndGlobal
