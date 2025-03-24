@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BouncingBot")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6e539de6996743e4d345b2d33cb0bf1372d051a5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f176e335b2b6830ec8c8258186411d2ba84ada8a")]
 [assembly: System.Reflection.AssemblyProductAttribute("BouncingBot")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BouncingBot")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
