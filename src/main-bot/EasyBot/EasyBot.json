@@ -1,7 +1,7 @@
 {
-  "name": "Easy Bot",
+  "name": "PistonVarioBoreUp",
   "version": "1.0",
-  "authors": ["Rafizan"],
+  "authors": ["Fajar Kurniawan", "Rafizan Muhammad S", "Salman Hanif"],
   "description": "A bot that wins easily",
   "homepage": "",
   "countryCodes": ["id"],

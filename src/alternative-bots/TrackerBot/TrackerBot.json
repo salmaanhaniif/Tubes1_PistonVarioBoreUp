@@ -1,7 +1,7 @@
 {
-  "name": "TrackerBot",
+  "name": "PistonVarioBoreUp",
   "version": "1.0",
-  "authors": ["IRK Lab Assistant"],
+  "authors": ["Fajar Kurniawan", "Rafizan Muhammad S", "Salman Hanif"],
   "description": "A bot that drives forward and backward, and fires a bullet",
   "homepage": "",
   "countryCodes": ["id"],

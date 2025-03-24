@@ -1,7 +1,7 @@
 {
-  "name": "Bouncing Bot",
+  "name": "PistonVarioBoreUp",
   "version": "1.0",
-  "authors": ["Rafizan"],
+  "authors": ["Fajar Kurniawan", "Rafizan Muhammad S", "Salman Hanif"],
   "description": "A bot that bounces off walls",
   "homepage": "",
   "countryCodes": ["id"],

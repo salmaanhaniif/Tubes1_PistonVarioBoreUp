@@ -818,19 +818,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Fajar\\.nuget\\packages\\": {}
+    "C:\\Users\\rafis\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\RoboCode\\tubes1-if2211-starter-pack-1.0\\TrackerBot\\TrackerBot.csproj",
+      "projectUniqueName": "C:\\Users\\rafis\\Documents\\Kuliah\\Semester 4\\STIMA\\Tubes1_KopSekopSekop\\src\\alternative-bots\\TrackerBot\\TrackerBot.csproj",
       "projectName": "TrackerBot",
-      "projectPath": "D:\\RoboCode\\tubes1-if2211-starter-pack-1.0\\TrackerBot\\TrackerBot.csproj",
-      "packagesPath": "C:\\Users\\Fajar\\.nuget\\packages\\",
-      "outputPath": "D:\\RoboCode\\tubes1-if2211-starter-pack-1.0\\TrackerBot\\obj\\",
+      "projectPath": "C:\\Users\\rafis\\Documents\\Kuliah\\Semester 4\\STIMA\\Tubes1_KopSekopSekop\\src\\alternative-bots\\TrackerBot\\TrackerBot.csproj",
+      "packagesPath": "C:\\Users\\rafis\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\rafis\\Documents\\Kuliah\\Semester 4\\STIMA\\Tubes1_KopSekopSekop\\src\\alternative-bots\\TrackerBot\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Fajar\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\rafis\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net9.0"

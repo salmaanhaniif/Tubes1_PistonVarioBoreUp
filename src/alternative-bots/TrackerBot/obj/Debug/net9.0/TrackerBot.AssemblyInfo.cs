@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TrackerBot")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+58f82f936a2643dcf31c913ba8d0790dc546ee26")]
 [assembly: System.Reflection.AssemblyProductAttribute("TrackerBot")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TrackerBot")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
