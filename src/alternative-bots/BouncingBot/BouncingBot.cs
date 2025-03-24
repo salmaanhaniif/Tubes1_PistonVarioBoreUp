@@ -5,7 +5,7 @@ using System.Drawing;
 using Robocode.TankRoyale.BotApi;
 using Robocode.TankRoyale.BotApi.Events;
 
-public class EasyBot : Bot {   
+public class BouncingBot : Bot {   
     private enum ScanMode {
         Radar,
         Focus
@@ -15,8 +15,8 @@ public class EasyBot : Bot {
 
     // Movement Variables
     #region Movement Variables
-    private const float BORDER_DESIRE = 1f;
-    private const double LAST_SEEN_LIMIT = 30;
+    private const double BORDER_CHECK = 30;
+    private Vector2 bounceDirection;
     #endregion
 
     // Shooting Variables
@@ -51,18 +51,18 @@ public class EasyBot : Bot {
     private const double WEAK_THRESHOLD = 20;
 
     static void Main(string[] args) {
-        new EasyBot().Start();
+        new BouncingBot().Start();
     }
 
-    EasyBot() : base(BotInfo.FromFile("EasyBot.json")) { }
+    BouncingBot() : base(BotInfo.FromFile("BouncingBot.json")) { }
 
     public override void Run() {
         // Color setup
-        BodyColor = Color.Orange;
-        TurretColor = Color.Orange;
-        RadarColor = Color.Orange;
-        BulletColor = Color.Orange;
-        ScanColor = Color.Orange;
+        BodyColor = Color.Red;
+        TurretColor = Color.Red;
+        RadarColor = Color.Red;
+        BulletColor = Color.Red;
+        ScanColor = Color.Red;
 
         botIntels = new Dictionary<int, BotIntel>();
 
@@ -83,65 +83,37 @@ public class EasyBot : Bot {
     }
 
     private void HandleMovement() {
-        // Calculate preferred direction
-        Vector2 preferredDirection = CalculateAvoidDirection();
-        double preferredDirectionLength = preferredDirection.Length();
-
-        // Normalize
-        if (preferredDirection.Length() != 0) preferredDirection = preferredDirection / preferredDirection.Length();
-
         // Move
-        MoveToDirection(preferredDirection, preferredDirectionLength);
+        MoveToDirection(bounceDirection);
     }
 
-    private Vector2 CalculateAvoidDirection() {
-        // Calculate preferred direction away from the bots last seen location
-        Vector2 preferredDirection = new Vector2(0, 0);
-        Vector2 tempDirection = new Vector2(0, 0);
-        foreach (BotIntel botIntel in botIntels.Values)
-        {
-            if (botIntel.botHistory.length > 0)
-            {
-                BotHistoryEntry lastEntry = botIntel.botHistory.GetMostRecentEntry();
-                if (TurnNumber - lastEntry.Time > LAST_SEEN_LIMIT) continue;
-                tempDirection.X = (float) (X - lastEntry.Location.X);
-                tempDirection.Y = (float) (Y - lastEntry.Location.Y);
-                float distance = tempDirection.Length();
+    private void MoveToDirection(Vector2 direction) {
+        // Calculate turn needed to face direction
+        double moveDirection = (double) (MathF.Atan2(direction.Y, direction.X) * (180 / MathF.PI));
+        double turnAmount = -CalcBearing(moveDirection);
+        double turnAmountReverse = -CalcBearing((moveDirection + 180) % 360);
 
-                float weight = 1;
-                if (lastEntry.Energy <= WEAK_THRESHOLD) {
-                    weight = -1;
-                }
+        if (Math.Abs(turnAmount) < Math.Abs(turnAmountReverse)) {
+            if (turnAmount == 0) TargetSpeed = 8;
+            SetTurnRight(turnAmount);
+        } else {
+            if (turnAmountReverse == 0) TargetSpeed = -8;
+            SetTurnRight(turnAmountReverse);
+        }
+    }
 
-                preferredDirection += tempDirection * weight / (distance * distance * distance);
-            }
+    private void BounceWall() {
+        if (Math.Abs(X) < BORDER_CHECK) {
+            bounceDirection = new Vector2((float) Math.Abs(bounceDirection.X), (float) bounceDirection.Y);
+        } else if (Math.Abs(ArenaWidth - X) < BORDER_CHECK) {
+            bounceDirection = new Vector2(-(float) Math.Abs(bounceDirection.X), (float) bounceDirection.Y);
         }
 
-        // Calculate preferred direction away from the arena border
-        float temp = (float) X;
-        preferredDirection += new Vector2(1, 0) / (temp * temp) * BORDER_DESIRE;
-        temp = (float) (ArenaWidth - X);
-        preferredDirection += new Vector2(-1, 0) / (temp * temp) * BORDER_DESIRE;
-        temp = (float) Y;
-        preferredDirection += new Vector2(0, 1) / (temp * temp) * BORDER_DESIRE;
-        temp = (float) (ArenaHeight - Y);
-        preferredDirection += new Vector2(0, -1) / (temp * temp) * BORDER_DESIRE;
-
-        // Calculate preferred direction away from the arena center
-        tempDirection.X = (float) (X - (ArenaWidth / 2));
-        tempDirection.Y = (float) (Y - (ArenaHeight / 2));
-        temp = tempDirection.Length();
-        preferredDirection += tempDirection / (temp * temp * temp) * BORDER_DESIRE;
-
-        return preferredDirection;
-    }
-
-    private void MoveToDirection(Vector2 direction, double length) {
-        // Calculate turn needed to face direction
-        double turnAmount = -CalcBearing((double) (MathF.Atan2(direction.Y, direction.X) * (180 / MathF.PI)));
-
-        TargetSpeed = 8 - Math.Abs(turnAmount) * length * 50;
-        SetTurnRight(turnAmount);
+        if (Math.Abs(Y) < BORDER_CHECK) {
+            bounceDirection = new Vector2((float) bounceDirection.X, (float) Math.Abs(bounceDirection.Y));
+        } else if (Math.Abs(ArenaHeight - Y) < BORDER_CHECK) {
+            bounceDirection = new Vector2((float) bounceDirection.X, -(float) Math.Abs(bounceDirection.Y));
+        }
     }
 
     private void HandleShooting() {
@@ -256,6 +228,9 @@ public class EasyBot : Bot {
         targetId = 0;
         aimDirection = 0;
         aimLastUpdate = 0;
+
+        double rand = new Random().NextDouble() * 360;
+        bounceDirection = new Vector2((float) Math.Cos(rand * (MathF.PI / 180)), (float) Math.Sin(rand * (MathF.PI / 180)));
     }
 
     private bool idHasHistory(int id, int count) {
@@ -298,6 +273,10 @@ public class EasyBot : Bot {
                 lastRadarScan = TurnNumber - FOCUS_LIMIT / 2;
             }
         }
+    }
+
+    public override void OnHitWall(HitWallEvent e) {
+        BounceWall();
     }
 
     public override void OnRoundStarted(RoundStartedEvent roundStartedEvent) {

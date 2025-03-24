@@ -1,0 +1,10 @@
+{
+  "name": "Bouncing Bot",
+  "version": "1.0",
+  "authors": ["Rafizan"],
+  "description": "A bot that bounces off walls",
+  "homepage": "",
+  "countryCodes": ["id"],
+  "platform": ".Net 9.0",
+  "programmingLang": "C# latest"
+}
